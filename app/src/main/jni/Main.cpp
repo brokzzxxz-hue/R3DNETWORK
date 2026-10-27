@@ -9,15 +9,17 @@
 #include <iostream>
 #include <dlfcn.h>
 #include <cmath>
+#include <android/log.h>
 
-#include "Includes/Logger.h"
-#include "Includes/obfuscate.h"
-#include "Includes/Utils.h"
+// Define nosso próprio log em vez de depender da pasta Includes
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "ModMenu", __VA_ARGS__)
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "ModMenu", __VA_ARGS__)
+
+// Vamos manter o OBFUSCATE para as strings
+#define OBFUSCATE(str) str 
+
 #include "KittyMemory/MemoryPatch.h"
 #include "Menu.h"
-
-// Target lib here
-#define targetLibName OBFUSCATE("libil2cpp.so")
 
 #include "Includes/Macros.h"
 
